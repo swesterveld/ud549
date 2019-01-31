@@ -19,3 +19,18 @@ describe('Address Book', function() {
     expect(addressBook.getContact(0)).not.toBeDefined()
   })
 })
+
+describe('Async Address Book', function() {
+  let addressBook = new AddressBook()
+
+  beforeEach(function(done) {
+    addressBook.getInitialContacts(function() {
+      done()
+    })
+  })
+
+  it('should grab initial contacts', function(done) {
+    expect(addressBook.initialComplete).toBe(true)
+    done()
+  })
+})
